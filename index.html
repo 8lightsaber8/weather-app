@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Search for current weather conditions in cities around the world." />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <p class="app-brand"><span class="brand-mark" aria-hidden="true">☼</span>Weather App</p>
+      <p class="app-subtitle">Check the weather anywhere</p>
+    </header>
+
+    <main class="weather-app">
+      <section class="search-section" aria-labelledby="search-heading">
+        <p class="section-kicker">Local conditions, clearly</p>
+        <h1 id="search-heading">Weather at a glance.</h1>
+        <form class="search-form" action="#" method="get">
+          <label class="visually-hidden" for="city-search">City name</label>
+          <input
+            class="search-input"
+            id="city-search"
+            name="city"
+            type="search"
+            placeholder="Enter a city name"
+            autocomplete="address-level2"
+            enterkeyhint="search"
+            required />
+          <button class="search-button" type="submit">Search</button>
+        </form>
+      </section>
+
+      <section class="weather-content" aria-label="Weather results" aria-live="polite">
+        <section class="empty-state state-message" aria-labelledby="empty-state-title">
+          <span class="state-icon" aria-hidden="true">☁</span>
+          <h2 id="empty-state-title">Choose a place</h2>
+          <p>Enter a city to view its current local conditions.</p>
+        </section>
+
+        <section class="loading-state state-message hidden" aria-labelledby="loading-state-title" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <h2 id="loading-state-title">Loading...</h2>
+          <p>Getting the latest weather details.</p>
+        </section>
+
+        <section class="error-state state-message hidden" aria-labelledby="error-state-title" role="alert">
+          <span class="state-icon state-icon-error" aria-hidden="true">!</span>
+          <h2 id="error-state-title">City not found</h2>
+          <p>Check the spelling or try searching for a different city.</p>
+        </section>
+
+        <article class="weather-card hidden" aria-labelledby="city-name">
+          <header class="weather-card-header">
+            <section class="weather-location" aria-label="Location">
+              <p class="eyebrow">Current weather</p>
+              <h2 id="city-name">Kyiv</h2>
+              <p class="country-name">Ukraine</p>
+            </section>
+            <span class="weather-icon" role="img" aria-label="Partly cloudy">⛅</span>
+          </header>
+
+          <section class="current-conditions" aria-label="Current conditions">
+            <p class="temperature"><data value="20">20</data><span aria-hidden="true">°</span></p>
+            <p class="weather-description">Partly cloudy</p>
+            <p class="feels-like">Feels like <data value="18">18°C</data></p>
+          </section>
+
+          <section class="weather-details" aria-label="Additional weather details">
+            <article class="weather-detail">
+              <p class="detail-label">Humidity</p>
+              <p class="detail-value"><data value="64">64%</data></p>
+            </article>
+            <article class="weather-detail">
+              <p class="detail-label">Wind</p>
+              <p class="detail-value"><data value="12">12 km/h</data></p>
+            </article>
+            <article class="weather-detail">
+              <p class="detail-label">Visibility</p>
+              <p class="detail-value"><data value="10">10 km</data></p>
+            </article>
+            <article class="weather-detail">
+              <p class="detail-label">Pressure</p>
+              <p class="detail-value"><data value="1015">1015 hPa</data></p>
+            </article>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Weather information updates when you search.</p>
+    </footer>
+  </body>
+</html>
