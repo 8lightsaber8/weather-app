@@ -303,32 +303,58 @@ p {
 }
 
 .weather-icon {
-  display: grid;
+  display: block;
   flex: 0 0 auto;
-  width: clamp(3.25rem, 10vw, 4.5rem);
-  aspect-ratio: 1;
-  place-items: center;
+  width: clamp(3.25rem, 10vw, 5.5rem);
+  height: clamp(3.25rem, 10vw, 5.5rem);
+  padding: 0.5rem;
   border: 1px solid var(--border);
   border-radius: 50%;
   background: #1c2b25;
-  font-size: clamp(1.75rem, 6vw, 2.5rem);
 }
 
 .current-conditions {
   margin-top: clamp(1.75rem, 5vw, 2.75rem);
 }
 
-.temperature {
-  font-size: clamp(4.25rem, 17vw, 7.5rem);
+.temperature-main {
+  display: flex;
+  align-items: flex-start;
+  font-size: clamp(5rem, 17vw, 7.5rem);
   font-weight: 700;
-  letter-spacing: -0.085em;
+  letter-spacing: -0.08em;
   line-height: 0.85;
 }
 
-.temperature span {
+.temperature-main span {
+  margin-top: 0.08em;
   color: var(--text-secondary);
-  font-size: 0.52em;
-  vertical-align: top;
+  font-size: 0.45em;
+  letter-spacing: -0.04em;
+}
+
+.temperature-range {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.temperature-range p {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.temperature-range data {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.temperature-range span {
+  color: var(--text-secondary);
 }
 
 .weather-description {
@@ -367,6 +393,18 @@ p {
   font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
   font-weight: 650;
   overflow-wrap: anywhere;
+}
+
+.detail-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
 }
 
 .app-footer {

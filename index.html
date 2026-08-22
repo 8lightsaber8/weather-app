@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Search for current weather conditions in cities around the world." />
+
     <title>Weather App</title>
+
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="app-header">
@@ -16,7 +22,7 @@
       <section class="search-section" aria-labelledby="search-heading">
         <p class="section-kicker">Local conditions, clearly</p>
         <h1 id="search-heading">Weather at a glance.</h1>
-        <form class="search-form" action="#" method="get">
+        <form class="search-form" method="get">
           <label class="visually-hidden" for="city-search">City name</label>
           <input
             class="search-input"
@@ -32,56 +38,103 @@
       </section>
 
       <section class="weather-content" aria-label="Weather results" aria-live="polite">
-        <section class="empty-state state-message" aria-labelledby="empty-state-title">
+        <section class="empty-state state-message" data-empty aria-labelledby="empty-state-title">
           <span class="state-icon" aria-hidden="true">☁</span>
           <h2 id="empty-state-title">Choose a place</h2>
           <p>Enter a city to view its current local conditions.</p>
         </section>
 
-        <section class="loading-state state-message hidden" aria-labelledby="loading-state-title" role="status">
+        <section
+          class="loading-state state-message hidden"
+          data-loading
+          aria-labelledby="loading-state-title"
+          role="status">
           <span class="spinner" aria-hidden="true"></span>
           <h2 id="loading-state-title">Loading...</h2>
           <p>Getting the latest weather details.</p>
         </section>
 
-        <section class="error-state state-message hidden" aria-labelledby="error-state-title" role="alert">
+        <section class="error-state state-message hidden" data-error aria-labelledby="error-state-title" role="alert">
           <span class="state-icon state-icon-error" aria-hidden="true">!</span>
           <h2 id="error-state-title">City not found</h2>
-          <p>Check the spelling or try searching for a different city.</p>
+          <p data-message-how-to-solve-the-problem>Check the spelling or try searching for a different city.</p>
         </section>
 
-        <article class="weather-card hidden" aria-labelledby="city-name">
+        <article class="weather-card hidden" data-weather aria-labelledby="city-name">
           <header class="weather-card-header">
             <section class="weather-location" aria-label="Location">
               <p class="eyebrow">Current weather</p>
-              <h2 id="city-name">Kyiv</h2>
-              <p class="country-name">Ukraine</p>
+              <h2 id="city-name"></h2>
+              <p class="country-name"></p>
             </section>
-            <span class="weather-icon" role="img" aria-label="Partly cloudy">⛅</span>
+
+            <img class="weather-icon" data-weather-icon alt="" />
           </header>
 
           <section class="current-conditions" aria-label="Current conditions">
-            <p class="temperature"><data value="20">20</data><span aria-hidden="true">°</span></p>
-            <p class="weather-description">Partly cloudy</p>
-            <p class="feels-like">Feels like <data value="18">18°C</data></p>
+            <div class="temperature-main">
+              <data data-temperature-now></data>
+              <span aria-hidden="true">&nbsp;°</span>
+            </div>
+
+            <div class="temperature-range">
+              <p>
+                H:
+                <data data-temperature-max></data>
+                <span aria-hidden="true">°</span>
+              </p>
+
+              <p>
+                L:
+                <data data-temperature-min></data>
+                <span aria-hidden="true">°</span>
+              </p>
+            </div>
+
+            <p class="weather-description"></p>
+
+            <p class="feels-like">
+              Feels like
+              <data data-feels-like></data>
+              <span aria-hidden="true"> °C</span>
+            </p>
           </section>
 
           <section class="weather-details" aria-label="Additional weather details">
             <article class="weather-detail">
               <p class="detail-label">Humidity</p>
-              <p class="detail-value"><data value="64">64%</data></p>
+              <p class="detail-value">
+                <data data-humidity></data>
+                <span aria-hidden="true"> %</span>
+              </p>
             </article>
+
             <article class="weather-detail">
-              <p class="detail-label">Wind</p>
-              <p class="detail-value"><data value="12">12 km/h</data></p>
+              <div class="detail-heading">
+                <img class="detail-icon" src="./icons/wind.svg" alt="" aria-hidden="true" />
+                <p class="detail-label">Wind</p>
+              </div>
+
+              <p class="detail-value">
+                <data data-wind-speed></data>
+                <span aria-hidden="true"> km/h</span>
+              </p>
             </article>
+
             <article class="weather-detail">
               <p class="detail-label">Visibility</p>
-              <p class="detail-value"><data value="10">10 km</data></p>
+              <p class="detail-value">
+                <data data-visibility></data>
+                <span aria-hidden="true"> km</span>
+              </p>
             </article>
+
             <article class="weather-detail">
               <p class="detail-label">Pressure</p>
-              <p class="detail-value"><data value="1015">1015 hPa</data></p>
+              <p class="detail-value">
+                <data data-pressure></data>
+                <span aria-hidden="true"> hPa</span>
+              </p>
             </article>
           </section>
         </article>
@@ -91,5 +144,7 @@
     <footer class="app-footer">
       <p>Weather information updates when you search.</p>
     </footer>
+
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
